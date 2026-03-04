@@ -1734,3 +1734,16 @@ main {
 .progress-filled {
     width: 100% !important; /* Or use data-attributes if allowed */
 }
+
+.btn-play.disabled-placeholder {
+    opacity: 0.6;
+    cursor: default;
+    pointer-events: none;
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    border-radius: 50px;
+    font-weight: 500;
+    text-decoration: none;
+}
