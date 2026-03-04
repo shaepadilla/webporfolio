@@ -442,15 +442,6 @@ section {
     backdrop-filter: blur(5px);
 }
 
-/* Category Filter Buttons */
-.work-filters {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
-}
-
 .filter-btn {
     background: rgba(219, 174, 219, 0.1);
     border: 1px solid rgba(219, 174, 219, 0.3);
@@ -1126,14 +1117,6 @@ section {
   color: #000000;
 }
 
-.form-status {
-  margin-top: 1rem;
-  text-align: center;
-  font-weight: 400;
-  color: #dbaedb;
-  font-family: "Montserrat", sans-serif;
-}
-
 /* ===== FOOTER ===== */
 .footer {
   background: rgba(0, 0, 0, 0.5);
@@ -1355,4 +1338,369 @@ section {
     color: var(--text-light);
     margin-bottom: 1rem;
     display: block;
+}
+
+/* Add these improvements to your existing CSS */
+
+/* ===== ADD THESE MISSING STYLES ===== */
+
+/* Form Status Styles - Add to your contact form section */
+.form-status {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    animation: fadeIn 0.3s ease;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(219, 174, 219, 0.2);
+}
+
+.form-status i {
+    margin-right: 0.5rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Resume animation stopper class */
+.resize-animation-stopper * {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Improve focus styles for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+.filter-btn:focus-visible,
+.nav-link:focus-visible {
+    outline: 2px solid #dbaedb;
+    outline-offset: 2px;
+}
+
+/* Loading state for buttons */
+.btn:disabled,
+.btn.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.fa-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Work card content styling */
+.work-content {
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border-radius: 0 0 1rem 1rem;
+}
+
+.work-tech {
+    margin-bottom: 0.75rem;
+}
+
+.work-tech span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.8rem;
+    color: #dbaedb;
+    background: rgba(219, 174, 219, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+}
+
+.work-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.work-content p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* Modal title styling */
+#modalTitle {
+    color: white;
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+/* Improve mobile touch targets */
+@media (max-width: 768px) {
+    .filter-btn,
+    .btn,
+    .nav-link,
+    .tool-item,
+    .credential-badge,
+    .social-links a {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .modal-controls button {
+        padding: 0.75rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    .navbar,
+    .hero-buttons,
+    .work-overlay,
+    .contact-form,
+    .footer,
+    .project-modal {
+        display: none !important;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .hero-title,
+    .section-title {
+        color: black;
+    }
+}
+
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+/* Better hover states for cards */
+.work-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid rgba(219, 174, 219, 0.1);
+}
+
+.work-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(219, 174, 219, 0.3);
+    box-shadow: 0 20px 30px rgba(219, 174, 219, 0.2);
+}
+
+/* Category filter container */
+.work-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    padding: 0 15px;
+}
+
+/* Active filter button */
+.filter-btn.active {
+    background: #dbaedb;
+    color: #000;
+    box-shadow: 0 0 20px rgba(219, 174, 219, 0.3);
+}
+
+/* Disabled state for disabled buttons */
+.btn-play.disabled {
+    background: rgba(219, 174, 219, 0.2);
+    color: rgba(255, 255, 255, 0.5);
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Tool item active states */
+.tool-item {
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Ensure images don't break layout */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Better form validation styling */
+.form-group input:invalid:not(:placeholder-shown),
+.form-group textarea:invalid:not(:placeholder-shown) {
+    border-color: #ff6b6b;
+}
+
+.form-group input:valid:not(:placeholder-shown),
+.form-group textarea:valid:not(:placeholder-shown) {
+    border-color: #51cf66;
+}
+
+/* Success message styling */
+.form-status.success {
+    color: #51cf66;
+    background: rgba(81, 207, 102, 0.1);
+    border-color: rgba(81, 207, 102, 0.3);
+}
+
+.form-status.error {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+    border-color: rgba(255, 107, 107, 0.3);
+}
+
+/* Modal improvements */
+.project-modal {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-modal[style*="display: flex"] {
+    opacity: 1;
+}
+
+.modal-container {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.project-modal[style*="display: flex"] .modal-container {
+    transform: scale(1);
+}
+
+/* Loading state for iframe */
+#projectFrame.loading {
+    background: #1a1618;
+    position: relative;
+}
+
+#projectFrame.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    border: 3px solid rgba(219, 174, 219, 0.3);
+    border-top-color: #dbaedb;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Better hover effects for touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .work-card:active {
+        transform: scale(0.98);
+    }
+    
+    .work-overlay {
+        opacity: 1;
+        visibility: visible;
+        background: rgba(0, 0, 0, 0.5);
+    }
+    
+    .btn-play {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-light: #E8E0E8;
+        --text-muted: #B8A8B8;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .btn,
+    .filter-btn,
+    .credential-badge {
+        border: 2px solid white;
+    }
+    
+    .highlight {
+        -webkit-text-fill-color: #dbaedb;
+        background: none;
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    body::before,
+    body::after,
+    .image-wrapper.full-length::before {
+        animation: none !important;
+    }
+}
+
+/* Ensure footer stays at bottom */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+/* Work grid gap fix */
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0 15px;
+}
+
+/* Container padding consistency */
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 0 15px;
+    }
 }
