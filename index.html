@@ -75,8 +75,8 @@
             <div class="hero-content">
                 <!-- Title element "Full Stack Web Developer" -->
                 <span class="hero-subtitle">Full Stack Web Developer</span>
-                <!-- Trainee name element - FIXED: Added class and ID for better test detection -->
-                <div class="trainee-name" id="trainee-name">Shara Mae Padilla</div>
+                <!-- Trainee name element - REQUIRED FOR TEST -->
+                <div class="trainee-name">Shara Mae Padilla</div>
                 <h1 class="hero-title">Crafting digital experiences <i class="fa-solid fa-laptop-code"></i></h1>
                 <!-- Original portfolio paragraph preserved -->
                 <p class="hero-description">I build accessible, responsive, and performant web applications using HTML5,
@@ -99,14 +99,14 @@
             </div>
 
             <div class="work-grid">
-                <!-- PROJECT 1: Financial Tracker - FIXED: Added missing project file -->
+                <!-- PROJECT 1: Financial Tracker -->
                 <div class="work-card" data-category="lifestyle">
                     <div class="work-image">
-                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&h=250&fit=crop" alt="Financial Tracker Application Dashboard" loading="lazy">
+                        <img src="./assets/img1.jpg" alt="Financial Tracker Application Dashboard" loading="lazy">
                         <div class="work-overlay">
-                            <a href="./projects/FinancialTracker/index.html" class="btn-play" target="_blank" rel="noopener noreferrer">
+                            <button class="btn-play open-modal" data-path="./projects/FinancialTracker/index.html">
                                 <i class="fas fa-rocket"></i> Launch Project
-                            </a>
+                            </button>
                         </div>
                     </div>
                     <div class="work-content">
@@ -118,14 +118,14 @@
                     </div>
                 </div>
 
-                <!-- PROJECT 2: Tetris Game - FIXED: Added missing project file -->
+                <!-- PROJECT 2: Tetris Game -->
                 <div class="work-card" data-category="minigames">
                     <div class="work-image">
-                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=250&fit=crop" alt="Tetris Game JavaScript Application" loading="lazy">
+                        <img src="./assets/img2.jpg" alt="Tetris Game JavaScript Application" loading="lazy">
                         <div class="work-overlay">
-                            <a href="./projects/tetris/index.html" class="btn-play" target="_blank" rel="noopener noreferrer">
+                            <button class="btn-play open-modal" data-path="./projects/tetris/index.html">
                                 <i class="fas fa-gamepad"></i> Play Game
-                            </a>
+                            </button>
                         </div>
                     </div>
                     <div class="work-content">
@@ -137,14 +137,14 @@
                     </div>
                 </div>
 
-                <!-- PROJECT 3: Digimart E-commerce - FIXED: Added missing project file -->
+                <!-- PROJECT 3: Digimart E-commerce -->
                 <div class="work-card" data-category="web-apps">
                     <div class="work-image">
-                        <img src="https://images.unsplash.com/photo-1472851294608-062f824d9cc1?w=400&h=250&fit=crop" alt="Digimart E-commerce Platform" loading="lazy">
+                        <img src="./assets/img3.jpg" alt="Digimart E-commerce Platform" loading="lazy">
                         <div class="work-overlay">
-                            <a href="./projects/E-commerce/index.html" class="btn-play" target="_blank" rel="noopener noreferrer">
+                            <button class="btn-play open-modal" data-path="./projects/E-commerce/index.html">
                                 <i class="fas fa-eye"></i> Live Preview
-                            </a>
+                            </button>
                         </div>
                     </div>
                     <div class="work-content">
@@ -159,7 +159,7 @@
                 <!-- PROJECT 4: E-commerce API Documentation -->
                 <div class="work-card" data-category="api">
                     <div class="work-image">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop" alt="E-commerce API Documentation" loading="lazy">
+                        <img src="./assets/img4.jpg" alt="E-commerce API Documentation" loading="lazy">
                         <div class="work-overlay">
                             <span class="btn-play disabled">
                                 <i class="fas fa-code"></i> Coming Soon
@@ -178,7 +178,7 @@
                 <!-- PROJECT 5: Course Booking API Documentation -->
                 <div class="work-card" data-category="api">
                     <div class="work-image">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop" alt="Course Booking API Documentation" loading="lazy">
+                        <img src="./assets/img5.jpg" alt="Course Booking API Documentation" loading="lazy">
                         <div class="work-overlay">
                             <span class="btn-play disabled">
                                 <i class="fas fa-code"></i> Coming Soon
@@ -197,7 +197,7 @@
                 <!-- PROJECT 6: Course Booking App -->
                 <div class="work-card" data-category="web-apps">
                     <div class="work-image">
-                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=250&fit=crop" alt="Course Booking Application" loading="lazy">
+                        <img src="./assets/img6.jpg" alt="Course Booking Application" loading="lazy">
                         <div class="work-overlay">
                             <span class="btn-play disabled">
                                 <i class="fas fa-mobile-alt"></i> In Development
@@ -216,7 +216,7 @@
                 <!-- PROJECT 7: E-commerce App -->
                 <div class="work-card" data-category="web-apps">
                     <div class="work-image">
-                        <img src="https://images.unsplash.com/photo-1472851294608-062f824d9cc1?w=400&h=250&fit=crop" alt="E-commerce Application" loading="lazy">
+                        <img src="./assets/img7.jpg" alt="E-commerce Application" loading="lazy">
                         <div class="work-overlay">
                             <span class="btn-play disabled">
                                 <i class="fas fa-shopping-cart"></i> Planned
@@ -235,7 +235,7 @@
                 <!-- PROJECT 8: Airline Booking System Mockup -->
                 <div class="work-card" data-category="design">
                     <div class="work-image">
-                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&h=250&fit=crop" alt="Airline Booking System Mockup" loading="lazy">
+                        <img src="./assets/img8.jpg" alt="Airline Booking System Mockup" loading="lazy">
                         <div class="work-overlay">
                             <span class="btn-play disabled">
                                 <i class="fas fa-paint-brush"></i> Mockup
@@ -254,7 +254,7 @@
                 <!-- PROJECT 9: Airline Booking System Prototype -->
                 <div class="work-card" data-category="design">
                     <div class="work-image">
-                        <img src="https://images.unsplash.com/photo-1542296333-7e5c2f5b0b8b?w=400&h=250&fit=crop" alt="Airline Booking System Prototype" loading="lazy">
+                        <img src="./assets/img9.jpg" alt="Airline Booking System Prototype" loading="lazy">
                         <div class="work-overlay">
                             <span class="btn-play disabled">
                                 <i class="fas fa-drafting-compass"></i> Prototype
@@ -273,7 +273,7 @@
                 <!-- PROJECT 10: Short Courses Capstone -->
                 <div class="work-card" data-category="capstone">
                     <div class="work-image">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop" alt="Short Courses Capstone Project" loading="lazy">
+                        <img src="./assets/img10.jpg" alt="Short Courses Capstone Project" loading="lazy">
                         <div class="work-overlay">
                             <span class="btn-play disabled">
                                 <i class="fas fa-star"></i> Capstone
@@ -292,8 +292,8 @@
         </div>
     </section>
 
-    <!-- Modal for project preview - KEPT for functionality but simplified -->
-    <div id="projectModal" class="project-modal" style="display: none;">
+    <!-- Modal for project preview -->
+    <div id="projectModal" class="project-modal">
         <div class="modal-container">
             <div class="modal-header">
                 <h3 id="modalTitle">Project Preview</h3>
@@ -314,8 +314,7 @@
             <div class="about-grid">
                 <div class="about-image">
                     <div class="image-wrapper full-length">
-                        <!-- FIXED: Using a reliable placeholder image instead of local file -->
-                        <img src="https://images.unsplash.com/photo-1494790108777-0f0e7f7c4c9e?w=400&h=500&fit=crop" alt="Shae Padilla - Front-End Developer" loading="lazy">
+                        <img src="./assets/shae.png" alt="Shae Padilla - Front-End Developer" loading="lazy">
                     </div>
                     <div class="experience-badge">
                         <i class="fas fa-code"></i>
@@ -492,7 +491,7 @@
                 </div>
 
                 <!-- Contact Form -->
-                <form class="contact-form" id="contactForm" action="#" method="post">
+                <form class="contact-form" id="contactForm">
                     <div class="form-group">
                         <label for="name" class="form-label">Your Name</label>
                         <input type="text" id="name" name="name" class="form-control" required>
