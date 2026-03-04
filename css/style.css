@@ -1,6 +1,5 @@
 /* ===== VARIABLES ===== */
 :root {
-  
   --gradient-primary: linear-gradient(to right top, #000000, #232021, #403b3e, #5f575e, #7f7680, #857b87, #8a7f8e, #8f8496, #7c6e82, #6a596e, #58455a, #473147);
   --gradient-dark: linear-gradient(to right top, #000000, #0a0809, #141012, #1d171c, #251e25, #2e2630, #372d3b, #403546, #4a3e53, #544761, #5e516e, #685a7c);
   --gradient-light: linear-gradient(to right top, #473147, #58455a, #6a596e, #7c6e82, #8f8496, #9a8ca2, #a595ae, #b19eba, #bba2c2, #c5a6ca, #d0aad2, #dbaedb);
@@ -498,6 +497,12 @@ section {
     background: #fff;
 }
 
+.btn-play.disabled {
+    background: rgba(219, 174, 219, 0.3);
+    color: rgba(255, 255, 255, 0.5);
+    cursor: not-allowed;
+    pointer-events: none;
+}
 
 /* Fix: Makes the overlay appear on hover */
 .work-card .work-overlay {
@@ -506,11 +511,11 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Darken image on hover */
+    background: rgba(0, 0, 0, 0.7);
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0; /* Hidden by default */
+    opacity: 0;
     visibility: hidden;
     transition: var(--transition);
     z-index: 5;
@@ -525,23 +530,22 @@ section {
 .btn-play i {
     margin-right: 8px;
     font-size: 1.1rem;
-    color: inherit; /* Inherits the black color from btn-play */
+    color: inherit;
 }
+
 /* Responsive Image Wrapper */
 .work-image {
     position: relative;
     width: 100%;
-    /* Standardizes all project thumbnails to the same size */
     aspect-ratio: 16 / 9; 
     overflow: hidden;
     border-radius: 1rem 1rem 0 0;
-    background: #1a1618; /* Placeholder color while loading */
+    background: #1a1618;
 }
 
 .work-image img {
     width: 100%;
     height: 100%;
-    /* This is key: it fills the area without stretching the aspect ratio */
     object-fit: cover; 
     object-position: center;
     transition: var(--transition);
@@ -560,23 +564,21 @@ section {
     width: 100%;
     height: 100%;
     border: none;
-    /* Ensures the game/app inside feels native to the modal */
     display: block;
 }
 
 @media (max-width: 768px) {
     .modal-container {
-        height: 95vh; /* Take more space on mobile */
+        height: 95vh;
         width: 95vw;
     }
     
     .work-grid {
-        grid-template-columns: 1fr; /* Single column on mobile */
+        grid-template-columns: 1fr;
         gap: 1.5rem;
     }
 }
 
-/* ===== ABOUT SECTION ===== */
 /* ===== ABOUT SECTION ===== */
 .about {
   background: rgba(0, 0, 0, 0.1);
@@ -660,7 +662,6 @@ section {
     aspect-ratio: 3/4;
     max-height: 500px;
     position: relative;
-    /* Matches the web's dark theme background */
     background: linear-gradient(135deg, #232021 0%, #473147 100%);
     box-shadow: 0 0 30px rgba(219, 174, 219, 0.2);
 }
@@ -673,7 +674,6 @@ section {
     left: -3px;
     right: -3px;
     bottom: -3px;
-    /* Using your theme variables for the glow */
     background: linear-gradient(135deg, #dbaedb, #473147, #8f8496, #dbaedb);
     background-size: 300% 300%;
     border-radius: 2.2rem;
@@ -690,7 +690,6 @@ section {
     right: 0;
     bottom: 0;
     border-radius: 1.9rem;
-    /* Subtle vignette to help the subject pop */
     background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.3) 100%);
     box-shadow: inset 0 0 30px rgba(219, 174, 219, 0.1);
     pointer-events: none;
@@ -711,7 +710,6 @@ section {
     border-radius: 1.8rem;
     position: relative;
     z-index: 1;
-    /* Slight brightness/contrast adjustment to match the moody lighting */
     filter: brightness(1.05) contrast(1.02);
 }
 
@@ -1075,6 +1073,14 @@ section {
   margin-bottom: 1.2rem;
 }
 
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-light);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
 .form-group input,
 .form-group textarea {
   width: 100%;
@@ -1093,12 +1099,6 @@ section {
   border-radius: 1.2rem;
   resize: vertical;
   min-height: 120px;
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-  font-weight: 300;
 }
 
 .form-group input:focus,
@@ -1297,7 +1297,7 @@ section {
     height: 100%;
     background: rgba(0, 0, 0, 0.95);
     z-index: 9999;
-    display: none; /* Controlled by JS */
+    display: none;
     align-items: center;
     justify-content: center;
     padding: 20px;
@@ -1346,4 +1346,13 @@ section {
     width: 100%;
     height: 100%;
     border: none;
+}
+
+/* Trainee name styling - added for test requirement */
+.trainee-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    display: block;
 }

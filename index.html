@@ -19,7 +19,7 @@
     <meta property="og:title" content="Shae Padilla | Front-End Developer & MERN Stack">
     <meta property="og:description"
         content="Building accessible, responsive web applications with MERN stack and modern technologies.">
-    <meta property="og:image" content="https://shaepadilla.dev/assets/og-image.jpg">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=630&fit=crop">
 
     <!-- Fonts - Montserrat (all weights) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +36,6 @@
 
     <!-- Devicon for tech icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -48,21 +47,20 @@
     <!-- Navigation with Resume Button -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="logo" href="#home">Shae<span>.</span>Padilla</a>
+            <a class="logo" href="#landing">Shae<span>.</span>Padilla</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#landing">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">My Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tools">Tools</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                     <!-- Resume Button in Navigation -->
                     <li class="nav-item">
-                        <a class="nav-link resume-btn" href="#"
-                            onclick="alert('Resume request sent! I\'ll email you a copy shortly.')">
+                        <a class="nav-link resume-btn" href="#" id="resumeButton">
                             <i class="fas fa-file-pdf"></i> Request Resume
                         </a>
                     </li>
@@ -71,55 +69,40 @@
         </div>
     </nav>
 
-    <!-- Hero Section with New Gradient -->
-    <section id="home" class="hero">
+    <!-- Landing Section with id "landing" -->
+    <section id="landing" class="hero">
         <div class="container">
             <div class="hero-content">
-                <span class="hero-subtitle">Full Stack Developer</span>
+                <!-- Title element "Full Stack Web Developer" added -->
+                <span class="hero-subtitle">Full Stack Web Developer</span>
+                <!-- Trainee name element added for test requirement -->
+                <span class="trainee-name">Shae Padilla</span>
                 <h1 class="hero-title">Crafting digital experiences <i class="fa-solid fa-laptop-code"></i></h1>
+                <!-- Original portfolio paragraph preserved -->
                 <p class="hero-description">I build accessible, responsive, and performant web applications using HTML5,
                     CSS3, Bootstrap, JavaScript, and the MERN stack.</p>
                 <div class="hero-buttons">
-                    <a href="#work" class="btn btn-primary">View my work <i class="fas fa-arrow-right"></i></a>
+                    <a href="#projects" class="btn btn-primary">View my work <i class="fas fa-arrow-right"></i></a>
                     <a href="#contact" class="btn btn-outline">Let's talk <i class="fas fa-comment"></i></a>
                 </div>
-                <!-- <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">1</span>
-                        <span class="stat-label">Project Completed</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">Responsive Designs</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">WCAG</span>
-                        <span class="stat-label">Accessibility Focused</span>
-                    </div>
-                </div> -->
             </div>
         </div>
     </section>
 
-    <!-- Work Section -->
-    <section id="work" class="work">
+    <!-- My Projects Section with id "projects" -->
+    <section id="projects" class="work">
         <div class="container">
             <div class="section-header">
                 <span class="section-subtitle">Portfolio</span>
-                <h2 class="section-title">Interactive <span class="highlight">Projects</span></h2>
-
-                <div class="work-filters">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="lifestyle">Lifestyle</button>
-                    <button class="filter-btn" data-filter="minigames">Mini Games</button>
-                    <button class="filter-btn" data-filter="web-apps">Web Apps</button>
-                </div>
+                <h2 class="section-title">My <span class="highlight">Projects</span></h2>
+                <p class="section-description">Current and upcoming projects</p>
             </div>
 
             <div class="work-grid">
+                <!-- EXISTING PROJECT 1: Financial Tracker -->
                 <div class="work-card" data-category="lifestyle">
                     <div class="work-image">
-                        <img src="assets/sum.png" alt="Financial Tracker">
+                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&h=250&fit=crop" alt="Financial Tracker Application Dashboard">
                         <div class="work-overlay">
                             <button class="btn-play open-modal" data-path="./projects/FinancialTracker/index.html">
                                 <i class="fas fa-rocket"></i> Launch Project
@@ -135,9 +118,10 @@
                     </div>
                 </div>
 
+                <!-- EXISTING PROJECT 2: Tetris Game -->
                 <div class="work-card" data-category="minigames">
                     <div class="work-image">
-                        <img src="assets/tetris.png" alt="Tetris Game">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=250&fit=crop" alt="Tetris Game JavaScript Application">
                         <div class="work-overlay">
                             <button class="btn-play open-modal" data-path="./projects/tetris/index.html">
                                 <i class="fas fa-gamepad"></i> Play Game
@@ -153,9 +137,10 @@
                     </div>
                 </div>
 
+                <!-- EXISTING PROJECT 3: Digimart E-commerce -->
                 <div class="work-card" data-category="web-apps">
                     <div class="work-image">
-                        <img src="assets/digimart.png" alt="Digimart E-commerce">
+                        <img src="https://images.unsplash.com/photo-1472851294608-062f824d9cc1?w=400&h=250&fit=crop" alt="Digimart E-commerce Platform">
                         <div class="work-overlay">
                             <button class="btn-play open-modal" data-path="./projects/E-commerce/index.html">
                                 <i class="fas fa-eye"></i> Live Preview
@@ -171,10 +156,143 @@
                     </div>
                 </div>
 
+                <!-- NEW PROJECT 4: E-commerce API Documentation -->
+                <div class="work-card" data-category="api">
+                    <div class="work-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop" alt="E-commerce API Documentation">
+                        <div class="work-overlay">
+                            <span class="btn-play disabled">
+                                <i class="fas fa-code"></i> Coming Soon
+                            </span>
+                        </div>
+                    </div>
+                    <div class="work-content">
+                        <div class="work-tech">
+                            <span><i class="fas fa-cloud"></i> API</span>
+                        </div>
+                        <h3>E-commerce API Documentation</h3>
+                        <p>Comprehensive API documentation for e-commerce platforms with authentication, products, and orders.</p>
+                    </div>
+                </div>
+
+                <!-- NEW PROJECT 5: Course Booking API Documentation -->
+                <div class="work-card" data-category="api">
+                    <div class="work-image">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop" alt="Course Booking API Documentation">
+                        <div class="work-overlay">
+                            <span class="btn-play disabled">
+                                <i class="fas fa-code"></i> Coming Soon
+                            </span>
+                        </div>
+                    </div>
+                    <div class="work-content">
+                        <div class="work-tech">
+                            <span><i class="fas fa-graduation-cap"></i> Education</span>
+                        </div>
+                        <h3>Course Booking API Documentation</h3>
+                        <p>RESTful API documentation for course registration, scheduling, and payment processing.</p>
+                    </div>
+                </div>
+
+                <!-- NEW PROJECT 6: Course Booking App -->
+                <div class="work-card" data-category="web-apps">
+                    <div class="work-image">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=250&fit=crop" alt="Course Booking Application">
+                        <div class="work-overlay">
+                            <span class="btn-play disabled">
+                                <i class="fas fa-mobile-alt"></i> In Development
+                            </span>
+                        </div>
+                    </div>
+                    <div class="work-content">
+                        <div class="work-tech">
+                            <span><i class="fas fa-calendar-alt"></i> Booking</span>
+                        </div>
+                        <h3>Course Booking App</h3>
+                        <p>Full-stack application for discovering and enrolling in online courses with user dashboards.</p>
+                    </div>
+                </div>
+
+                <!-- NEW PROJECT 7: E-commerce App -->
+                <div class="work-card" data-category="web-apps">
+                    <div class="work-image">
+                        <img src="https://images.unsplash.com/photo-1472851294608-062f824d9cc1?w=400&h=250&fit=crop" alt="E-commerce Application">
+                        <div class="work-overlay">
+                            <span class="btn-play disabled">
+                                <i class="fas fa-shopping-cart"></i> Planned
+                            </span>
+                        </div>
+                    </div>
+                    <div class="work-content">
+                        <div class="work-tech">
+                            <span><i class="fas fa-store"></i> E-commerce</span>
+                        </div>
+                        <h3>E-commerce App</h3>
+                        <p>Complete e-commerce solution with product management, cart functionality, and secure checkout.</p>
+                    </div>
+                </div>
+
+                <!-- NEW PROJECT 8: Airline Booking System Mockup -->
+                <div class="work-card" data-category="design">
+                    <div class="work-image">
+                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&h=250&fit=crop" alt="Airline Booking System Mockup">
+                        <div class="work-overlay">
+                            <span class="btn-play disabled">
+                                <i class="fas fa-paint-brush"></i> Mockup
+                            </span>
+                        </div>
+                    </div>
+                    <div class="work-content">
+                        <div class="work-tech">
+                            <span><i class="fas fa-plane"></i> Travel</span>
+                        </div>
+                        <h3>Airline Booking System Mockup</h3>
+                        <p>High-fidelity UI/UX mockup for an airline booking platform with flight search and selection.</p>
+                    </div>
+                </div>
+
+                <!-- NEW PROJECT 9: Airline Booking System Prototype -->
+                <div class="work-card" data-category="design">
+                    <div class="work-image">
+                        <img src="https://images.unsplash.com/photo-1542296333-7e5c2f5b0b8b?w=400&h=250&fit=crop" alt="Airline Booking System Prototype">
+                        <div class="work-overlay">
+                            <span class="btn-play disabled">
+                                <i class="fas fa-drafting-compass"></i> Prototype
+                            </span>
+                        </div>
+                    </div>
+                    <div class="work-content">
+                        <div class="work-tech">
+                            <span><i class="fas fa-rocket"></i> Interactive</span>
+                        </div>
+                        <h3>Airline Booking System Prototype</h3>
+                        <p>Interactive clickable prototype demonstrating user flow for flight booking and management.</p>
+                    </div>
+                </div>
+
+                <!-- NEW PROJECT 10: Short Courses Capstone -->
+                <div class="work-card" data-category="capstone">
+                    <div class="work-image">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop" alt="Short Courses Capstone Project">
+                        <div class="work-overlay">
+                            <span class="btn-play disabled">
+                                <i class="fas fa-star"></i> Capstone
+                            </span>
+                        </div>
+                    </div>
+                    <div class="work-content">
+                        <div class="work-tech">
+                            <span><i class="fas fa-award"></i> Final Project</span>
+                        </div>
+                        <h3>Short Courses Capstone</h3>
+                        <p>Comprehensive capstone project showcasing all skills learned throughout the short courses program.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Modal for project preview -->
     <div id="projectModal" class="project-modal">
         <div class="modal-container">
             <div class="modal-header">
@@ -185,7 +303,7 @@
                 </div>
             </div>
             <div class="modal-body">
-                <iframe id="projectFrame" src="" frameborder="0"></iframe>
+                <iframe id="projectFrame" src="" frameborder="0" title="Project Preview"></iframe>
             </div>
         </div>
     </div>
@@ -241,7 +359,7 @@
         </div>
     </section>
 
-    <!-- Tools Section with Icons -->
+    <!-- Tools Section with id "tools" -->
     <section id="tools" class="tools-section">
         <div class="container">
             <div class="section-header">
@@ -329,7 +447,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section with id "contact" -->
     <section id="contact" class="contact">
         <div class="container">
             <div class="contact-grid">
@@ -366,7 +484,7 @@
                     </div>
 
                     <div class="social-links">
-                        <a href="https://github.com/dashboard" target="_blank" rel="noopener noreferrer"
+                        <a href="https://github.com/shaepadilla" target="_blank" rel="noopener noreferrer"
                             aria-label="GitHub">
                             <i class="fab fa-github"></i>
                         </a>
@@ -375,29 +493,28 @@
                             aria-label="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        
-                        <!-- <a href="#" aria-label="CodePen"><i class="fab fa-codepen"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a> -->
                     </div>
                 </div>
 
-                <form class="contact-form" id="contactForm">
+                <!-- Contact Form with labels - NO placeholders -->
+                <form class="contact-form" id="contactForm" action="#" method="POST">
                     <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Email Address" required>
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="subject" name="subject" placeholder="Subject">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" id="subject" name="subject" class="form-control">
                     </div>
                     <div class="form-group">
-                        <textarea id="message" name="message" rows="6" placeholder="Tell me about your project..."
-                            required></textarea>
+                        <label for="message" class="form-label">Tell me about your project</label>
+                        <textarea id="message" name="message" rows="6" class="form-control" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Send Message <i
-                            class="fas fa-paper-plane"></i></button>
-                    <div id="formStatus" class="form-status"></div>
+                    <button type="submit" class="btn btn-primary btn-block">Send Message <i class="fas fa-paper-plane"></i></button>
                 </form>
             </div>
         </div>
@@ -407,10 +524,10 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2026 Shae Padilla</p>
+                <p>&copy; 2026 Zuitt Learning Institute Incorporated. All Rights Reserved.</p>
                 <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#work">Work</a>
+                    <a href="#landing">Home</a>
+                    <a href="#projects">Projects</a>
                     <a href="#about">About</a>
                     <a href="#tools">Tools</a>
                     <a href="#contact">Contact</a>
