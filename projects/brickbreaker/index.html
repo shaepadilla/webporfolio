@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brick Breaker Pro - Smooth Flow</title>
+    <style>
+        :root { --primary: #0095DD; --danger: #ff4757; }
+        body { background: #1a1a1a; color: white; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden; }
+        .stats { display: flex; gap: 30px; font-size: 1.2rem; margin-bottom: 10px; font-weight: bold; background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 50px; }
+        #game-wrapper { position: relative; }
+        canvas { background: #000; border: 5px solid #333; border-radius: 8px; box-shadow: 0 0 30px rgba(0,0,0,0.5); cursor: none; }
+        #countdown { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 80px; font-weight: bold; color: white; pointer-events: none; display: none; z-index: 5; }
+        .controls { margin-top: 15px; display: flex; gap: 10px; }
+        button { padding: 10px 20px; font-size: 1rem; cursor: pointer; border: none; border-radius: 5px; background: var(--primary); color: white; }
+        #modalOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: flex; align-items: center; justify-content: center; visibility: hidden; z-index: 10; }
+        #modal { background: #222; padding: 40px; border-radius: 15px; text-align: center; border: 2px solid var(--primary); }
+        .visible { visibility: visible !important; }
+        .heart { color: var(--danger); }
+    </style>
+</head>
+<body>
+
+    <div class="stats">
+        <div>Lvl: <span id="lvlDisp">1</span></div>
+        <div>Score: <span id="scoreDisp">0</span></div>
+        <div>Lives: <span id="livesDisp" class="heart">❤❤❤</span></div>
+    </div>
+
+    <div id="game-wrapper">
+        <canvas id="gameCanvas" width="480" height="320"></canvas>
+        <div id="countdown">3</div>
+    </div>
+
+    <div class="controls">
+        <button id="pauseBtn">Pause (P)</button>
+        <button onclick="location.reload()">Restart All</button>
+    </div>
+
+    <div id="modalOverlay">
+        <div id="modal">
+            <h2 id="modalTitle">GAME OVER</h2>
+            <p id="modalBody">Score: 0</p>
+            <button onclick="resetGame()">Try Again</button>
+        </div>
+    </div>
+
+<script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+    const countdownEl = document.getElementById("countdown");
+    
+    // Audio Engine
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playSound(freq, type, duration, vol=0.1) {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.connect(gain); gain.connect(audioCtx.destination);
+        osc.start(); osc.stop(audioCtx.currentTime + duration);
+    }
+
+    // State
+    let level = 1, score = 0, lives = 3;
+    let isPaused = false, gameActive = false, inCountdown = false;
+    let ballRadius = 6, x, y, dx, dy, paddleWidth = 75, paddleX = 200;
+    let bricks = [];
+
+    // Mouse control works ALWAYS
+    document.addEventListener("mousemove", e => {
+        let relX = e.clientX - canvas.offsetLeft;
+        if(relX > 0 && relX < canvas.width) {
+            paddleX = relX - paddleWidth/2;
+            if(!gameActive) drawStatic(); // Keep paddle moving during countdown
+        }
+    });
+
+    function startLevelCountdown() {
+        inCountdown = true;
+        gameActive = false;
+        let count = 3;
+        countdownEl.style.display = "block";
+        countdownEl.innerText = count;
+        playSound(200, 'sine', 0.1);
+
+        const timer = setInterval(() => {
+            count--;
+            if (count > 0) {
+                countdownEl.innerText = count;
+                playSound(200, 'sine', 0.1);
+            } else {
+                clearInterval(timer);
+                countdownEl.style.display = "none";
+                inCountdown = false;
+                gameActive = true;
+                playSound(400, 'sine', 0.3);
+                requestAnimationFrame(gameLoop);
+            }
+        }, 1000);
+    }
+
+    function initLevel(isNewLevel) {
+        // Difficulty scaling
+        dx = 2 + (level * 0.4);
+        dy = -(2 + (level * 0.4));
+        const rows = 2 + level;
+        paddleWidth = Math.max(40, 80 - (level * 4));
+        
+        // Reset Ball
+        x = canvas.width / 2;
+        y = canvas.height - 30;
+
+        // Only rebuild bricks if it's a brand new level
+        if(isNewLevel) {
+            bricks = [];
+            for(let c=0; c<6; c++) {
+                bricks[c] = [];
+                for(let r=0; r<rows; r++) {
+                    bricks[c][r] = { x: 0, y: 0, status: 1 };
+                }
+            }
+            document.getElementById("lvlDisp").innerText = level;
+            drawStatic();
+            startLevelCountdown();
+        } else {
+            // If just losing a life, start immediately
+            gameActive = true;
+            requestAnimationFrame(gameLoop);
+        }
+        updateLivesUI();
+    }
+
+    function updateLivesUI() {
+        document.getElementById("livesDisp").innerText = "❤".repeat(lives);
+    }
+
+    function drawStatic() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Bricks
+        bricks.forEach((col, i) => col.forEach((b, j) => {
+            if(b.status == 1) {
+                b.x = i * 78 + 10; b.y = j * 23 + 40;
+                ctx.fillStyle = `hsl(${j * 35}, 70%, 50%)`;
+                ctx.fillRect(b.x, b.y, 70, 15);
+            }
+        }));
+        // Paddle
+        ctx.fillStyle = "#0095DD";
+        ctx.fillRect(paddleX, canvas.height-10, paddleWidth, 10);
+        // Ball
+        ctx.beginPath(); ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+        ctx.fillStyle = "white"; ctx.fill(); ctx.closePath();
+    }
+
+    function gameLoop() {
+        if(isPaused || !gameActive || inCountdown) return;
+        drawStatic();
+
+        // Wall/Paddle Physics
+        if(x + dx > canvas.width - ballRadius || x + dx < ballRadius) { dx = -dx; playSound(100, 'sine', 0.05); }
+        if(y + dy < ballRadius) { dy = -dy; playSound(100, 'sine', 0.05); }
+        else if(y + dy > canvas.height - ballRadius) {
+            if(x > paddleX && x < paddleX + paddleWidth) {
+                let hit = (x - (paddleX + paddleWidth/2)) / (paddleWidth/2);
+                dx = hit * 5; dy = -dy; playSound(150, 'square', 0.1);
+            } else {
+                lives--; playSound(100, 'sawtooth', 0.4, 0.2);
+                if(lives <= 0) { showModal("GAME OVER", "Final Level: " + level); }
+                else { initLevel(false); } // false = no countdown
+                return;
+            }
+        }
+
+        // Bricks collision
+        let currentBricks = 0;
+        bricks.forEach(col => col.forEach(b => {
+            if(b.status == 1) {
+                currentBricks++;
+                if(x > b.x && x < b.x + 70 && y > b.y && y < b.y + 15) {
+                    dy = -dy; b.status = 0; score++; playSound(400, 'triangle', 0.1);
+                    document.getElementById("scoreDisp").innerText = score;
+                }
+            }
+        }));
+
+        if(currentBricks === 0) {
+            if(level < 10) { level++; score=0; initLevel(true); } 
+            else { showModal("CHAMPION!", "10 Levels Cleared!"); }
+            return;
+        }
+
+        x += dx; y += dy;
+        requestAnimationFrame(gameLoop);
+    }
+
+    function showModal(title, msg) {
+        gameActive = false;
+        document.getElementById("modalTitle").innerText = title;
+        document.getElementById("modalBody").innerText = msg;
+        document.getElementById("modalOverlay").classList.add("visible");
+    }
+
+    function resetGame() {
+        level = 1; score = 0; lives = 3;
+        document.getElementById("modalOverlay").classList.remove("visible");
+        initLevel(true);
+    }
+
+    function togglePause() {
+        if(inCountdown || !gameActive) return;
+        isPaused = !isPaused;
+        document.getElementById("pauseBtn").innerText = isPaused ? "Resume (P)" : "Pause (P)";
+        if(!isPaused) gameLoop();
+    }
+
+    document.addEventListener("keydown", e => { if(e.key.toLowerCase()==="p") togglePause(); });
+
+    initLevel(true);
+</script>
+</body>
+</html>
