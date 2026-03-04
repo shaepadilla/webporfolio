@@ -41,34 +41,6 @@
     <link rel="stylesheet" href="css/style.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
-    
-    <!-- Test Fixes CSS -->
-    <style>
-        /* Ensure trainee name is visible for tests */
-        .trainee-name {
-            display: block;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #dbaedb;
-            margin: 1rem 0;
-            text-align: center;
-        }
-        
-        /* Ensure all links are clickable */
-        a, button, .btn, .nav-link, .work-card a, .btn-play {
-            pointer-events: auto !important;
-            cursor: pointer !important;
-        }
-        
-        /* Prevent animation issues during testing */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -103,9 +75,9 @@
             <div class="hero-content">
                 <!-- Title element "Full Stack Web Developer" -->
                 <span class="hero-subtitle">Full Stack Web Developer</span>
-                <!-- Trainee name element - REQUIRED FOR TEST - Now prominently displayed -->
-                <h1 class="trainee-name">Shara Mae Padilla</h1>
-                <h2 class="hero-title">Crafting digital experiences <i class="fa-solid fa-laptop-code"></i></h2>
+                <!-- Trainee name element - REQUIRED FOR TEST -->
+                <div class="trainee-name">Shara Mae Padilla</div>
+                <h1 class="hero-title">Crafting digital experiences <i class="fa-solid fa-laptop-code"></i></h1>
                 <!-- Original portfolio paragraph preserved -->
                 <p class="hero-description">I build accessible, responsive, and performant web applications using HTML5,
                     CSS3, Bootstrap, JavaScript, and the MERN stack.</p>

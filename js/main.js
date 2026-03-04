@@ -13,31 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
     initConsoleWelcome();
     initLazyLoading();
     initResizeHandler();
-    initTouchPrevention(); // Fixed version
+    initTouchPrevention();
     initResumeButton();
     initFilterButtons();
     initSmoothScroll();
-    
-    // Add test helper to ensure all links are accessible
-    ensureLinksAccessible();
 });
-
-// ===== TEST HELPER FUNCTION =====
-// Ensures all links are accessible for automated testing
-function ensureLinksAccessible() {
-    // Make sure all buttons and links have proper attributes
-    document.querySelectorAll('a, button, .btn, .nav-link, .btn-play').forEach(el => {
-        // Ensure no pointer-events: none is applied
-        if (window.getComputedStyle(el).pointerEvents === 'none') {
-            el.style.pointerEvents = 'auto';
-        }
-        
-        // Add proper ARIA attributes if missing
-        if (el.tagName === 'BUTTON' && !el.getAttribute('aria-label')) {
-            el.setAttribute('aria-label', el.textContent.trim() || 'Button');
-        }
-    });
-}
 
 // ===== Project Modal & Filtering =====
 function initProjectModal() {
@@ -303,11 +283,6 @@ function initImageFallback() {
                 this.src = fallback;
             }
         });
-        
-        // Ensure alt attribute exists for accessibility and tests
-        if (!img.hasAttribute('alt')) {
-            img.setAttribute('alt', '');
-        }
     });
 }
 
@@ -330,32 +305,18 @@ function initResizeHandler() {
     });
 }
 
-// ===== CRITICAL FIX: Touch Prevention =====
-// Removed e.preventDefault() which was causing test crawler to hang
 function initTouchPrevention() {
-    // Simple passive listener without any blocking operations
-    document.addEventListener('touchend', function(e) {
-        // Do nothing - just let the event pass through naturally
-        // This prevents the test crawler from getting stuck
-        return true;
-    }, { passive: true });
+    document.addEventListener('touchend', () => {}, { passive: true });
 }
 
-// ===== Resume Button =====
 function initResumeButton() {
     const btn = document.getElementById('resumeButton');
-    if (btn) {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('Resume request sent!');
-        });
-        
-        // Ensure button is clickable for tests
-        btn.style.pointerEvents = 'auto';
-    }
+    if (btn) btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('Resume request sent!');
+    });
 }
 
-// ===== Smooth Scroll =====
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -363,18 +324,8 @@ function initSmoothScroll() {
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 const navHeight = document.querySelector('.navbar')?.offsetHeight || 0;
-                window.scrollTo({ 
-                    top: target.offsetTop - navHeight, 
-                    behavior: 'smooth' 
-                });
+                window.scrollTo({ top: target.offsetTop - navHeight, behavior: 'smooth' });
             }
         });
     });
 }
-
-// ===== Error Handler for Testing =====
-window.addEventListener('error', function(e) {
-    // Log errors but don't throw - prevents test crashes
-    console.warn('Non-critical error caught:', e.message);
-    return true; // Prevents default error handling
-});
