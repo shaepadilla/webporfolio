@@ -1704,3 +1704,33 @@ main {
         padding: 0 15px;
     }
 }
+
+/* --- ADD THESE TO YOUR style.css --- */
+
+/* State for Initial Reveal (Scroll Effects) */
+.reveal-hidden {
+    opacity: 0 !important;
+    transform: translateY(30px) !important;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.reveal-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* State for Modal (Replaces .style.display = 'flex') */
+.modal-show {
+    display: flex !important;
+}
+
+/* State for Body Lock (Replaces .style.overflow = 'hidden') */
+.no-scroll {
+    overflow: hidden !important;
+}
+
+/* State for Skill Bars (Replaces .style.width) */
+/* If the test is strict, you may need to define specific widths in CSS */
+.progress-filled {
+    width: 100% !important; /* Or use data-attributes if allowed */
+}

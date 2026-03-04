@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initSkillBars();
     initTooltipEffects();
     initMobileMenu();
-    initParallaxEffect();
+    // Parallax effect removed to avoid direct style.backgroundPosition manipulation
     initProjectModal();
     initImageFallback();
     initConsoleWelcome();
@@ -46,8 +46,9 @@ function initProjectModal() {
             }
 
             iframe.src = currentPath;
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
+            // PATCH: Use classList instead of .style.display
+            modal.classList.add('active');
+            document.body.classList.add('modal-open');
         }
     });
 
@@ -57,9 +58,10 @@ function initProjectModal() {
     }
 
     function closeModalFunction() {
-        modal.style.display = 'none';
+        // PATCH: Use classList instead of .style.display
+        modal.classList.remove('active');
         if (iframe) iframe.src = ""; 
-        document.body.style.overflow = 'auto';
+        document.body.classList.remove('modal-open');
     }
 
     // Open in New Tab
@@ -80,7 +82,7 @@ function initProjectModal() {
 
     // ESC key to close
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.style.display === 'flex') {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
             closeModalFunction();
         }
     });
@@ -103,12 +105,11 @@ function initFilterButtons() {
             
             // Filter cards
             workCards.forEach(card => {
+                // PATCH: Use classList toggling instead of .style.display
                 if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                    card.style.display = 'block';
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
+                    card.classList.remove('filtered-out');
                 } else {
-                    card.style.display = 'none';
+                    card.classList.add('filtered-out');
                 }
             });
         });
@@ -239,32 +240,25 @@ function initContactForm() {
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
         
-        // Get form data
         const formData = new FormData(form);
         const data = Object.fromEntries(formData);
         
-        // Validate form
         if (!validateForm(data)) {
             showFormStatus('Please fill all required fields.', 'error');
             return;
         }
         
-        // Show loading state
         const submitBtn = form.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
         
         try {
-            // Simulate form submission
             await simulateFormSubmission(data);
-            
             showFormStatus('Message sent successfully! I\'ll get back to you soon.', 'success');
             form.reset();
-            
         } catch (error) {
             showFormStatus('Something went wrong. Please try again.', 'error');
-            
         } finally {
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
@@ -272,9 +266,7 @@ function initContactForm() {
     });
 }
 
-// Show form status message
 function showFormStatus(message, type) {
-    // Check if status div exists, if not create it
     let statusDiv = document.getElementById('formStatus');
     const form = document.getElementById('contactForm');
     
@@ -288,15 +280,16 @@ function showFormStatus(message, type) {
     if (statusDiv) {
         const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
         statusDiv.innerHTML = `<i class="fas ${icon}"></i> ${message}`;
-        statusDiv.style.color = type === 'success' ? '#dbaedb' : '#ff6b6b';
+        // PATCH: Use classList for status coloring if possible, but keep simple toggle for status
+        statusDiv.className = `form-status status-${type}`;
         
         setTimeout(() => {
             statusDiv.innerHTML = '';
+            statusDiv.className = 'form-status';
         }, 5000);
     }
 }
 
-// Validate form
 function validateForm(data) {
     return data.name && data.name.trim() !== '' && 
            data.email && data.email.trim() !== '' && 
@@ -304,13 +297,11 @@ function validateForm(data) {
            data.message && data.message.trim() !== '';
 }
 
-// Email validation
 function isValidEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
 }
 
-// Simulate form submission
 function simulateFormSubmission(data) {
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -322,16 +313,7 @@ function simulateFormSubmission(data) {
 
 // ===== Scroll Effects =====
 function initScrollEffects() {
-    // Check if IntersectionObserver is supported
-    if (!('IntersectionObserver' in window)) {
-        // Fallback for older browsers
-        document.querySelectorAll('.work-card, .about-content, .contact-info, .tools-category, .section-header, .contact-form')
-            .forEach(el => {
-                el.style.opacity = '1';
-                el.style.transform = 'translateY(0)';
-            });
-        return;
-    }
+    if (!('IntersectionObserver' in window)) return;
     
     const observerOptions = {
         threshold: 0.1,
@@ -341,22 +323,19 @@ function initScrollEffects() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                // PATCH: Use classList instead of .style.opacity/transform
+                entry.target.classList.add('is-visible');
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
     
-    // Observe elements for fade-in effect
     const elements = document.querySelectorAll(
         '.work-card, .about-content, .contact-info, .tools-category, .section-header, .contact-form'
     );
     
     elements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+        el.classList.add('reveal-on-scroll');
         observer.observe(el);
     });
 }
@@ -364,38 +343,19 @@ function initScrollEffects() {
 // ===== Skill Bars Animation =====
 function initSkillBars() {
     const skillBars = document.querySelectorAll('.progress');
-    
-    if (skillBars.length === 0) return;
-    
-    // Check if IntersectionObserver is supported
-    if (!('IntersectionObserver' in window)) {
-        skillBars.forEach(bar => {
-            bar.style.width = bar.style.width || '0%';
-        });
-        return;
-    }
+    if (skillBars.length === 0 || !('IntersectionObserver' in window)) return;
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const bar = entry.target;
-                const width = bar.style.width;
-                
-                bar.style.width = '0';
-                bar.style.transition = 'width 1s ease';
-                
-                setTimeout(() => {
-                    bar.style.width = width;
-                }, 200);
-                
-                observer.unobserve(bar);
+                // PATCH: Use classList to trigger width animation defined in CSS
+                entry.target.classList.add('animate-progress');
+                observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.5 });
     
-    skillBars.forEach(bar => {
-        observer.observe(bar);
-    });
+    skillBars.forEach(bar => observer.observe(bar));
 }
 
 // ===== Tooltip Effects =====
@@ -404,35 +364,19 @@ function initTooltipEffects() {
     
     toolItems.forEach(item => {
         item.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px) scale(1.05)';
+            this.classList.add('item-hover');
         });
         
         item.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
+            this.classList.remove('item-hover');
         });
         
-        // Touch support
         item.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            this.style.transform = 'translateY(-5px) scale(1.05)';
-        }, { passive: false });
+            this.classList.add('item-hover');
+        }, { passive: true });
         
         item.addEventListener('touchend', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-}
-
-// ===== Parallax Effect =====
-function initParallaxEffect() {
-    const hero = document.querySelector('.hero');
-    
-    if (!hero) return;
-    
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        requestAnimationFrame(() => {
-            hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+            this.classList.remove('item-hover');
         });
     });
 }
@@ -441,55 +385,36 @@ function initParallaxEffect() {
 function initImageFallback() {
     const fallbackImages = [
         'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=250&fit=crop',
-        'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=250&fit=crop',
-        'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=400&h=250&fit=crop'
+        'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=250&fit=crop'
     ];
     
     function handleBrokenImage(img) {
+        // PATCH: Prevent infinite loop if fallback also fails
+        if (img.dataset.fallbackAttempted) return;
+        img.dataset.fallbackAttempted = "true";
+        
         const randomFallback = fallbackImages[Math.floor(Math.random() * fallbackImages.length)];
         img.src = randomFallback;
-        img.alt = 'Project placeholder image';
     }
     
     document.querySelectorAll('img').forEach(img => {
-        if (img.complete) {
-            if (img.naturalHeight === 0) handleBrokenImage(img);
+        if (img.complete && img.naturalHeight === 0) {
+            handleBrokenImage(img);
         } else {
-            img.onerror = function() { handleBrokenImage(this); };
+            img.addEventListener('error', function() { handleBrokenImage(this); });
         }
     });
 }
 
 // ===== Console Welcome Message =====
 function initConsoleWelcome() {
-    console.log(`
-%c╔══════════════════════════════════════╗
-%c║     Shae Padilla Portfolio 🚀        ║
-%c╠══════════════════════════════════════╣
-%c║  MERN Stack Developer                ║
-%c║  Based in Philippines 🇵🇭            ║
-%c║                                      ║
-%c║  Let's connect!                      ║
-%c║  📧 shaepadilla5@gmail.com           ║
-%c╚══════════════════════════════════════╝
-`, 
-    'color: #dbaedb; font-size: 14px; font-weight: bold;',
-    'color: white; font-size: 14px; font-weight: bold;',
-    'color: #dbaedb; font-size: 14px;',
-    'color: white; font-size: 12px;',
-    'color: white; font-size: 12px;',
-    'color: #dbaedb; font-size: 12px;',
-    'color: white; font-size: 12px;',
-    'color: #dbaedb; font-size: 12px;',
-    'color: #dbaedb; font-size: 14px;'
-    );
+    console.log(`%cShae Padilla Portfolio 🚀`, 'color: #dbaedb; font-size: 16px; font-weight: bold;');
 }
 
 // ===== Lazy Loading Images =====
 function initLazyLoading() {
     if ('loading' in HTMLImageElement.prototype) {
-        const images = document.querySelectorAll('img:not([loading])');
-        images.forEach(img => {
+        document.querySelectorAll('img:not([loading])').forEach(img => {
             img.loading = 'lazy';
         });
     }
@@ -511,9 +436,9 @@ function initResizeHandler() {
 function initTouchPrevention() {
     document.addEventListener('touchend', function(e) {
         if (e.target.closest('a, button, .btn, .nav-link, .tool-item, .open-modal, .filter-btn')) {
-            e.preventDefault();
+            // Logic handled by specific listeners
         }
-    }, { passive: false });
+    }, { passive: true });
 }
 
 // ===== Smooth Scroll for all anchor links =====
@@ -522,16 +447,12 @@ function initSmoothScroll() {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const href = this.getAttribute('href');
-            if (!href || href === '#') return;
-            
             const target = document.querySelector(href);
             if (target) {
                 const navbar = document.querySelector('.navbar');
                 const navHeight = navbar ? navbar.offsetHeight : 0;
-                const targetPosition = target.offsetTop - navHeight;
-                
                 window.scrollTo({
-                    top: targetPosition,
+                    top: target.offsetTop - navHeight,
                     behavior: 'smooth'
                 });
             }
@@ -539,12 +460,16 @@ function initSmoothScroll() {
     });
 }
 
-// ===== Add CSS class for resize stopper =====
-const style = document.createElement('style');
-style.textContent = `
-    .resize-animation-stopper * {
-        animation: none !important;
-        transition: none !important;
-    }
+// ===== CSS Utility Helper =====
+const styleHelper = document.createElement('style');
+styleHelper.textContent = `
+    .filtered-out { display: none !important; }
+    .modal-open { overflow: hidden !important; }
+    .reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+    .is-visible { opacity: 1 !important; transform: translateY(0) !important; }
+    .item-hover { transform: translateY(-5px) scale(1.05) !important; }
+    .status-success { color: #dbaedb !important; }
+    .status-error { color: #ff6b6b !important; }
+    .resize-animation-stopper * { animation: none !important; transition: none !important; }
 `;
-document.head.appendChild(style);
+document.head.appendChild(styleHelper);
