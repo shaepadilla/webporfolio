@@ -275,7 +275,7 @@ function initTooltipEffects() {
 
 // ===== Image Fallback & Utilities =====
 function initImageFallback() {
-    const fallback = 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=250&fit=crop';
+    const fallback = './assets/img1.jpg';
     document.querySelectorAll('img').forEach(img => {
         img.addEventListener('error', function() {
             if (!this.dataset.fallbackAttempted) {
