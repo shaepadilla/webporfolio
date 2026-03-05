@@ -2,540 +2,373 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Primary Meta Tags for SEO -->
     <title>Shara Mae Padilla</title>
-    <meta name="title" content="Shara Mae Padilla | Front-End Developer & MERN Stack">
     <meta name="description"
-        content="Front-end and MERN stack developer specializing in responsive web design, accessibility, and modern JavaScript. Based in Philippines.">
-    <meta name="keywords"
-        content="HTML5, CSS3, JavaScript, Bootstrap, MongoDB, Express.js, React.js, Node.js, MERN Stack, Heroku, Git, Postman, Responsive Design, Web Accessibility">
+        content="Shae Padilla - Front-End and MERN Stack Developer. Responsive, accessible, modern web experiences." />
 
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="#">
-    <meta property="og:title" content="Shara Mae Padilla | Front-End Developer & MERN Stack">
-    <meta property="og:description"
-        content="Building accessible, responsive web applications with MERN stack and modern technologies.">
-    <meta property="og:image" content="./assets/img4.jpg">
+    <link rel="stylesheet" href="style.css" />
 
-    <!-- Fonts - Montserrat (all weights) -->
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Devicon for tech icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Navigation with Resume Button -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="logo" href="#landing">Shara Mae Padilla</a>
-            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button> -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#landing">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">My Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tools">Tools</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    <!-- Resume Button in Navigation -->
-                    <li class="nav-item">
-                        <a href="#contact" id="resumeButton">
-                            <i class="fas fa-file-pdf"></i> Request Resume
-                        </a>
-                    </li>
+
+    <!-- Background blobs -->
+    <div class="bg-blobs" aria-hidden="true">
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+        <div class="blob b3"></div>
+    </div>
+
+    <!-- NAV -->
+    <header class="navbar" id="top">
+        <div class="container nav-container">
+            <a class="logo" href="#top">Shae<span>.</span>Padilla</a>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="nav" id="navMenu">
+                <ul class="nav-links">
+                    <li><a class="nav-link" href="#about">About</a></li>
+                    <li><a class="nav-link" href="#projects">Projects</a></li>
+                    <li><a class="nav-link" href="#tools">Tools</a></li>
+                    <li><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
-            </div>
+
+                <a class="resume-btn" href="#contact">Request Resume</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <!-- Landing Section with id "landing" -->
-    <section id="landing" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <!-- Title element "Full Stack Web Developer" -->
-                <span class="hero-subtitle">Full Stack Web Developer</span>
-                <!-- Trainee name element - REQUIRED FOR TEST -->
-                <h1 id="trainee-name" class="hero-title">Shara Mae Padilla</h1>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container hero-inner reveal">
+            <p class="kicker">FRONT-END · MERN STACK · ACCESSIBILITY</p>
+            <h1>Hello, I’m <span class="accent">Shae Padilla</span></h1>
+            <p class="sub">
+                I craft robust, responsive, and accessible web applications with modern JavaScript and the MERN stack.
+            </p>
 
-                <h2 class="hero-subtitle">
-                    Crafting digital experiences <i class="fa-solid fa-laptop-code"></i>
+            <div class="hero-actions">
+                <a class="btn primary" href="#projects">View My Work</a>
+                <a class="btn ghost" href="#contact">Let’s Talk</a>
+
+                <a class="btn ghost" href="https://github.com/YOUR_GITHUB" target="_blank">
+                    <i class="fa-brands fa-github"></i> GitHub
+                </a>
+
+                <a class="btn ghost" href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank">
+                    <i class="fa-brands fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+        <div class="container about-grid">
+
+            <div class="about-card reveal">
+                <div class="photo-wrap">
+                    <img src="./assets/shae.png" alt="Shae Padilla portrait" />
+                </div>
+            </div>
+
+            <div class="about-content reveal">
+                <p class="section-label">ABOUT ME</p>
+
+                <h2 class="title-xl">
+                    <i class="fa-solid fa-code accent"></i> MERN Stack Developer
                 </h2>
-                <!-- Original portfolio paragraph preserved -->
-                <p class="hero-description">I build accessible, responsive, and performant web applications using HTML5,
-                    CSS3, Bootstrap, JavaScript, and the MERN stack.</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View my work <i class="fas fa-arrow-right"></i></a>
-                    <a href="#contact" class="btn btn-outline">Let's talk <i class="fas fa-comment"></i></a>
+
+                <p class="muted">
+                    I’m <strong>Shae Padilla</strong>, a Philippines-based web developer specializing in
+                    modern full-stack applications using the <strong>MERN stack</strong>.
+                    I focus on building responsive, accessible, and performance-optimized
+                    web experiences with clean, maintainable code.
+                </p>
+
+                <details class="details">
+                    <summary>See more about my process</summary>
+                    <div class="details-body">
+                        <p class="muted">
+                            I follow a mobile-first development approach, optimize applications for performance,
+                            and implement accessibility best practices. My workflow includes Git version control,
+                            API testing with Postman, and building reusable UI components.
+                        </p>
+                    </div>
+                </details>
+
+                <div class="pill-row">
+                    <span class="pill"><i class="fa-brands fa-html5"></i> HTML5</span>
+                    <span class="pill"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+                    <span class="pill"><i class="fa-brands fa-bootstrap"></i> Bootstrap</span>
+                    <span class="pill"><i class="fa-brands fa-react"></i> MERN Stack</span>
+                    <span class="pill"><i class="fa-solid fa-mobile-screen"></i> Responsive Design</span>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <!-- My Projects Section with id "projects" -->
-    <section id="projects" class="work">
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
         <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">Portfolio</span>
-                <h2 class="section-title">My <span class="highlight">Projects</span></h2>
-                <p class="section-description">Current and upcoming projects</p>
+            <div class="center-head reveal">
+                <p class="section-label">PORTFOLIO</p>
+                <h2 class="title-lg">My <span class="accent">Projects</span></h2>
+                <p class="muted">Current and upcoming projects</p>
             </div>
 
-            <div class="work-grid">
-                <!-- PROJECT 1 -->
-                <div class="work-card" data-category="lifestyle">
-                    <div class="work-image">
-                        <img src="./assets/img1.jpg" alt="Financial Tracker Application Dashboard" loading="lazy">
-                        <div class="work-overlay">
-                            <span class="btn-play disabled">
-                                <i class="fas fa-rocket"></i> Launch Project
-                            </span>
+            <div class="projects-grid">
+                <article class="project reveal">
+                    <div class="project-media">
+                        <img src="./assets/sum.png" alt="Financial Tracker preview" />
+                        <div class="project-overlay">
+                            <button class="btn small primary openModal" data-project="1">Preview</button>
                         </div>
                     </div>
-                    <div class="work-content">
-                        <div class="work-tech">
-                            <span><i class="fas fa-chart-line"></i> Data</span>
-                        </div>
+                    <div class="project-body">
+                        <span class="tag">Data</span>
                         <h3>Financial Tracker</h3>
-                        <p>Interactive dashboard for managing personal finances and daily habit tracking.</p>
+                        <p class="muted">Interactive dashboard for managing personal finances and habit tracking.</p>
                     </div>
-                </div>
+                </article>
 
-                <!-- PROJECT 2 -->
-                <div class="work-card" data-category="minigames">
-                    <div class="work-image">
-                        <img src="./assets/img2.jpg" alt="Tetris Game JavaScript Application" loading="lazy">
-                        <div class="work-overlay">
-                            <span class="btn-play disabled">
-                                <i class="fas fa-gamepad"></i> Play Game
-                            </span>
+                <article class="project reveal">
+                    <div class="project-media">
+                        <img src="./assets/tetris.png" alt="Tetris Game preview" />
+                        <div class="project-overlay">
+                            <button class="btn small primary openModal" data-project="2">Preview</button>
                         </div>
                     </div>
-                    <div class="work-content">
-                        <div class="work-tech">
-                            <span><i class="fas fa-bolt"></i> Arcade</span>
-                        </div>
+                    <div class="project-body">
+                        <span class="tag">Arcade</span>
                         <h3>Tetris Game</h3>
-                        <p>A fast-paced, classic JS-based arcade experience featuring multiple levels and scoring.</p>
+                        <p class="muted">Classic JS-based arcade game featuring multiple levels and scoring.</p>
                     </div>
-                </div>
+                </article>
 
-                <!-- PROJECT 3 -->
-                <div class="work-card" data-category="web-apps">
-                    <div class="work-image">
-                        <img src="./assets/img3.jpg" alt="Digimart E-commerce Platform" loading="lazy">
-                        <div class="work-overlay">
-                            <span class="btn-play disabled">
-                                <i class="fas fa-eye"></i> Live Preview
-                            </span>
+                <article class="project reveal">
+                    <div class="project-media">
+                        <img src="./assets/digimart.png" alt="Digimart preview" />
+                        <div class="project-overlay">
+                            <button class="btn small primary openModal" data-project="3">Preview</button>
                         </div>
                     </div>
-                    <div class="work-content">
-                        <div class="work-tech">
-                            <span><i class="fas fa-shopping-cart"></i> Shop</span>
-                        </div>
+                    <div class="project-body">
+                        <span class="tag">Shop</span>
                         <h3>Digimart</h3>
-                        <p>Full-stack grocery e-commerce platform with a mobile-first design and accessible UI.</p>
+                        <p class="muted">Full-stack grocery e-commerce platform with mobile-first design.</p>
                     </div>
-                </div>
-
-                <!-- PROJECT 4: E-commerce API Documentation -->
-                <div class="work-card" data-category="api">
-                    <div class="work-image">
-                        <img src="./assets/img4.jpg" alt="E-commerce API Documentation" loading="lazy">
-                        <div class="work-overlay">
-                            <span class="btn-play disabled">
-                                <i class="fas fa-code"></i> Coming Soon
-                            </span>
-                        </div>
-                    </div>
-                    <div class="work-content">
-                        <div class="work-tech">
-                            <span><i class="fas fa-cloud"></i> API</span>
-                        </div>
-                        <h3>E-commerce API Documentation</h3>
-                        <p>Comprehensive API documentation for e-commerce platforms.</p>
-                    </div>
-                </div>
-
-                <!-- PROJECT 5: Course Booking API Documentation -->
-                <div class="work-card" data-category="api">
-                    <div class="work-image">
-                        <img src="./assets/img5.jpg" alt="Course Booking API Documentation" loading="lazy">
-                        <div class="work-overlay">
-                            <span class="btn-play disabled">
-                                <i class="fas fa-code"></i> Coming Soon
-                            </span>
-                        </div>
-                    </div>
-                    <div class="work-content">
-                        <div class="work-tech">
-                            <span><i class="fas fa-graduation-cap"></i> Education</span>
-                        </div>
-                        <h3>Course Booking API Documentation</h3>
-                        <p>RESTful API documentation for course registration and scheduling.</p>
-                    </div>
-                </div>
-
-                <!-- PROJECT 6: Course Booking App -->
-                <div class="work-card" data-category="web-apps">
-                    <div class="work-image">
-                        <img src="./assets/img6.jpg" alt="Course Booking Application" loading="lazy">
-                        <div class="work-overlay">
-                            <span class="btn-play disabled">
-                                <i class="fas fa-mobile-alt"></i> In Development
-                            </span>
-                        </div>
-                    </div>
-                    <div class="work-content">
-                        <div class="work-tech">
-                            <span><i class="fas fa-calendar-alt"></i> Booking</span>
-                        </div>
-                        <h3>Course Booking App</h3>
-                        <p>Full-stack application for discovering and enrolling in online courses.</p>
-                    </div>
-                </div>
-
-                <!-- PROJECT 7: E-commerce App -->
-                <div class="work-card" data-category="web-apps">
-                    <div class="work-image">
-                        <img src="./assets/img7.jpg" alt="E-commerce Application" loading="lazy">
-                        <div class="work-overlay">
-                            <span class="btn-play disabled">
-                                <i class="fas fa-shopping-cart"></i> Planned
-                            </span>
-                        </div>
-                    </div>
-                    <div class="work-content">
-                        <div class="work-tech">
-                            <span><i class="fas fa-store"></i> E-commerce</span>
-                        </div>
-                        <h3>E-commerce App</h3>
-                        <p>Complete e-commerce solution with product management and secure checkout.</p>
-                    </div>
-                </div>
-
-                <!-- PROJECT 8: Airline Booking System Mockup -->
-                <div class="work-card" data-category="design">
-                    <div class="work-image">
-                        <img src="./assets/img8.jpg" alt="Airline Booking System Mockup" loading="lazy">
-                        <div class="work-overlay">
-                            <span class="btn-play disabled">
-                                <i class="fas fa-paint-brush"></i> Mockup
-                            </span>
-                        </div>
-                    </div>
-                    <div class="work-content">
-                        <div class="work-tech">
-                            <span><i class="fas fa-plane"></i> Travel</span>
-                        </div>
-                        <h3>Airline Booking System Mockup</h3>
-                        <p>High-fidelity UI/UX mockup for an airline booking platform.</p>
-                    </div>
-                </div>
-
-                <!-- PROJECT 9: Airline Booking System Prototype -->
-                <div class="work-card" data-category="design">
-                    <div class="work-image">
-                        <img src="./assets/img9.jpg" alt="Airline Booking System Prototype" loading="lazy">
-                        <div class="work-overlay">
-                            <span class="btn-play disabled">
-                                <i class="fas fa-drafting-compass"></i> Prototype
-                            </span>
-                        </div>
-                    </div>
-                    <div class="work-content">
-                        <div class="work-tech">
-                            <span><i class="fas fa-rocket"></i> Interactive</span>
-                        </div>
-                        <h3>Airline Booking System Prototype</h3>
-                        <p>Interactive clickable prototype for flight booking and management.</p>
-                    </div>
-                </div>
-
-                <!-- PROJECT 10: Short Courses Capstone -->
-                <div class="work-card" data-category="capstone">
-                    <div class="work-image">
-                        <img src="./assets/img10.jpg" alt="Short Courses Capstone Project" loading="lazy">
-                        <div class="work-overlay">
-                            <span class="btn-play disabled">
-                                <i class="fas fa-star"></i> Capstone
-                            </span>
-                        </div>
-                    </div>
-                    <div class="work-content">
-                        <div class="work-tech">
-                            <span><i class="fas fa-award"></i> Final Project</span>
-                        </div>
-                        <h3>Short Courses Capstone</h3>
-                        <p>Comprehensive capstone project showcasing all skills learned.</p>
-                    </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- Modal for project preview -->
-    <!-- <div id="projectModal" class="project-modal">
-        <div class="modal-container">
-            <div class="modal-header">
-                <h3 id="modalTitle">Project Preview</h3>
-                <div class="modal-controls">
-                    <button id="openNewTab" title="Open in new tab"><i class="fas fa-external-link-alt"></i></button>
-                    <button id="closeModal" title="Close"><i class="fas fa-times"></i></button>
-                </div>
-            </div>
-            <div class="modal-body">
-                <iframe id="projectFrame" src="about:blank" title="Project Preview"></iframe>
-            </div>
-        </div>
-    </div> -->
-
-    <!-- About Section -->
-    <section id="about" class="about">
+    <!-- TOOLS -->
+    <section id="tools" class="section">
         <div class="container">
-            <div class="about-grid">
-                <div class="about-image">
-                    <div class="image-wrapper full-length">
-                        <img src="./assets/shae.png" alt="Shae Padilla - Front-End Developer" loading="lazy">
+            <div class="center-head reveal">
+                <p class="section-label">MY TOOLKIT</p>
+                <h2 class="title-lg">Technologies I <span class="accent">work with</span></h2>
+                <p class="muted">Tools I use to build modern web applications</p>
+            </div>
+
+            <div class="toolcards">
+
+                <!-- FRONTEND -->
+                <div class="toolcard reveal">
+                    <h3>Front End</h3>
+                    <div class="toolgrid">
+
+                        <div class="toolitem">
+                            <i class="fa-brands fa-html5"></i>
+                            HTML5
+                        </div>
+
+                        <div class="toolitem">
+                            <i class="fa-brands fa-css3-alt"></i>
+                            CSS3
+                        </div>
+
+                        <div class="toolitem">
+                            <i class="fa-brands fa-bootstrap"></i>
+                            Bootstrap
+                        </div>
+
+                        <div class="toolitem">
+                            <i class="fa-brands fa-js"></i>
+                            JavaScript
+                        </div>
+
                     </div>
-                    <div class="experience-badge">
-                        <i class="fas fa-code"></i>
-                        <span>Junior</span>
-                        <small>Developer</small>
+                </div>
+
+                <!-- MERN -->
+                <div class="toolcard reveal">
+                    <h3>MERN Stack</h3>
+                    <div class="toolgrid">
+
+                        <div class="toolitem">
+                            <i class="fa-solid fa-database"></i>
+                            MongoDB
+                        </div>
+
+                        <div class="toolitem">
+                            <i class="fa-solid fa-server"></i>
+                            Express.js
+                        </div>
+
+                        <div class="toolitem">
+                            <i class="fa-brands fa-react"></i>
+                            React
+                        </div>
+
+                        <div class="toolitem">
+                            <i class="fa-brands fa-node-js"></i>
+                            Node.js
+                        </div>
+
                     </div>
                 </div>
 
-                <div class="about-content">
-                    <span class="section-subtitle">About Me</span>
-                    <h2 class="section-title">MERN Stack Developer passionate about <span class="highlight">accessible
-                            web experiences</span></h2>
+                <!-- OTHER -->
+                <div class="toolcard reveal">
+                    <h3>Other Tools</h3>
+                    <div class="toolgrid">
 
-                    <div class="about-text">
-                        <p>I'm Shara Mae Padilla, a Philippines-based developer specializing in building <strong>robust,
-                                responsive full-stack applications</strong>.</p>
+                        <div class="toolitem">
+                            <i class="fa-solid fa-cloud"></i>
+                            Heroku
+                        </div>
 
-                        <details class="about-details">
-                            <summary class="see-more-btn">See more about my process <i class="fas fa-chevron-down"></i>
-                            </summary>
-                            <div class="details-content">
-                                <p>My approach centers on <strong>mobile-first design</strong> and <strong>WCAG 2.1
-                                        accessibility</strong>.</p>
-                                <p>I utilize <strong>Git, Postman, and Heroku</strong> for a professional workflow.</p>
-                            </div>
-                        </details>
-                    </div>
+                        <div class="toolitem">
+                            <i class="fa-brands fa-git-alt"></i>
+                            Git
+                        </div>
 
-                    <div class="credentials">
-                        <span class="credential-badge"><i class="fas fa-check-circle"></i> HTML 5</span>
-                        <span class="credential-badge"><i class="fas fa-check-circle"></i> CSS</span>
-                        <span class="credential-badge"><i class="fas fa-check-circle"></i> Bootstrap 5</span>
-                        <span class="credential-badge"><i class="fas fa-check-circle"></i> MERN Stack</span>
-                        <span class="credential-badge"><i class="fas fa-check-circle"></i> Responsive Design</span>
+                        <div class="toolitem">
+                            <i class="fa-solid fa-flask"></i>
+                            Postman
+                        </div>
+
+                        <div class="toolitem">
+                            <i class="fa-solid fa-code"></i>
+                            Sublime
+                        </div>
+
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Tools Section with id "tools" -->
-    <section id="tools" class="tools-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">My Toolkit</span>
-                <h2 class="section-title">Technologies I <span class="highlight">work with</span></h2>
-                <p class="section-description">Tools I use to build modern web applications</p>
-            </div>
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+        <div class="container contact-grid">
 
-            <div class="tools-grid">
-                <!-- Front End Category -->
-                <div class="tools-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-code"></i> Front End
-                    </h3>
-                    <div class="tools-icons">
-                        <div class="tool-item">
-                            <i class="fab fa-html5"></i>
-                            <span>HTML5</span>
+            <aside class="contact-card reveal">
+                <p class="section-label">GET IN TOUCH</p>
+                <h2 class="title-lg">Let’s work <span class="accent">together</span></h2>
+                <p class="muted">I’m currently available for freelance work and full-time opportunities.</p>
+
+                <div class="contact-items">
+                    <div class="citem">
+                        <span class="cicon">✉</span>
+                        <div>
+                            <p class="cname">Email</p>
+                            <p class="muted">shaepadilla5@gmail.com</p>
                         </div>
-                        <div class="tool-item">
-                            <i class="fab fa-css3-alt"></i>
-                            <span>CSS3</span>
+                    </div>
+
+                    <div class="citem">
+                        <span class="cicon">☎</span>
+                        <div>
+                            <p class="cname">Phone</p>
+                            <p class="muted">+63 906 774 0868</p>
                         </div>
-                        <div class="tool-item">
-                            <i class="fab fa-bootstrap"></i>
-                            <span>Bootstrap</span>
-                        </div>
-                        <div class="tool-item">
-                            <i class="fab fa-js"></i>
-                            <span>JavaScript</span>
+                    </div>
+
+                    <div class="citem">
+                        <span class="cicon">⌂</span>
+                        <div>
+                            <p class="cname">Location</p>
+                            <p class="muted">Philippines (Open to remote)</p>
                         </div>
                     </div>
                 </div>
+            </aside>
 
-                <!-- MERN Stack Category -->
-                <div class="tools-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-layer-group"></i> MERN Stack
-                    </h3>
-                    <div class="tools-icons">
-                        <div class="tool-item">
-                            <i class="fas fa-database"></i>
-                            <span>MongoDB</span>
-                        </div>
-                        <div class="tool-item">
-                            <i class="fab fa-node-js"></i>
-                            <span>Express.js</span>
-                        </div>
-                        <div class="tool-item">
-                            <i class="fab fa-react"></i>
-                            <span>React.js</span>
-                        </div>
-                        <div class="tool-item">
-                            <i class="fab fa-node-js"></i>
-                            <span>Node.js</span>
-                        </div>
-                    </div>
-                </div>
+            <form class="form-card reveal" id="contactForm">
+                <label>
+                    <span>Your Name</span>
+                    <input type="text" name="name" placeholder="Enter your name" required />
+                </label>
 
-                <!-- Other Tools Category -->
-                <div class="tools-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-tools"></i> Other Tools
-                    </h3>
-                    <div class="tools-icons">
-                        <div class="tool-item">
-                            <i class="fas fa-cloud"></i>
-                            <span>Heroku</span>
-                        </div>
-                        <div class="tool-item">
-                            <i class="fab fa-git-alt"></i>
-                            <span>Git</span>
-                        </div>
-                        <div class="tool-item">
-                            <i class="fas fa-network-wired"></i>
-                            <span>Postman</span>
-                        </div>
-                        <div class="tool-item">
-                            <i class="fas fa-code"></i>
-                            <span>Sublime</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <label>
+                    <span>Email Address</span>
+                    <input type="email" name="email" placeholder="Enter your email" required />
+                </label>
+
+                <label>
+                    <span>Subject</span>
+                    <input type="text" name="subject" placeholder="Optional subject" />
+                </label>
+
+                <label>
+                    <span>Tell me about your project</span>
+                    <textarea name="message" rows="6" placeholder="Describe what you need..." required></textarea>
+                </label>
+
+                <button type="submit" class="btn primary full">Send Message ✈</button>
+                <p class="form-note" id="formNote" aria-live="polite"></p>
+            </form>
+
         </div>
     </section>
 
-    <!-- Contact Section with id "contact" -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <span class="section-subtitle">Get In Touch</span>
-                    <h2 class="section-title">Let's work <span class="highlight">together</span></h2>
-                    <p>I'm currently available for freelance work and full-time opportunities.</p>
-
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h4>Email</h4>
-                                <a href="mailto:shaepadilla5@gmail.com">shaepadilla5@gmail.com</a>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <i class="fas fa-phone-alt"></i>
-                            <div>
-                                <h4>Phone</h4>
-                                <a href="tel:+639067740868">+63 906 774 0868</a>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h4>Location</h4>
-                                <span>Philippines (Open to remote)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="social-links">
-                        <a href="https://github.com/shaepadilla">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/shae-padilla-28080401051998/">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label for="name" class="form-label">Your Name</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email Address</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject" class="form-label">Subject</label>
-                        <input type="text" id="subject" name="subject" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="message" class="form-label">Tell me about your project</label>
-                        <textarea id="message" name="message" rows="6" class="form-control" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Send Message <i
-                            class="fas fa-paper-plane"></i></button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2026 Zuitt Learning Institute Incorporated. All Rights Reserved.</p>
-                <div class="footer-links">
-                    <a href="#landing">Home</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#about">About</a>
-                    <a href="#tools">Tools</a>
-                    <a href="#contact">Contact</a>
-                </div>
+        <div class="container foot-inner">
+            <p>© 2026 Zuitt Learning Institute Incorporated. All Rights Reserved.</p>
+            <div class="foot-links">
+                <a href="#top">Home</a>
+                <a href="#projects">Projects</a>
+                <a href="#about">About</a>
+                <a href="#tools">Tools</a>
+                <a href="#contact">Contact</a>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script> -->
+    <!-- MODAL -->
+    <div class="modal" id="projectModal" aria-hidden="true">
+        <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <button class="modal-close" id="closeModal" aria-label="Close modal">×</button>
+            <h3 class="modal-title" id="modalTitle">Project</h3>
+            <div class="modal-body" id="modalBody"></div>
+            <div class="modal-actions">
+                <a class="btn ghost" id="modalLink" href="#" target="_blank" rel="noopener noreferrer">Open Live</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
